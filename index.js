@@ -27,7 +27,6 @@ io.on('connection', (socket) => {
     })
 
     socket.on("disconnect", () => {
-        console.log("User disconnected");
         const user = deleteUser(socket.id)
         if (user) {
             io.in(user.room).emit('notification', { title: 'Someone just left', description: `${user.name} just left the room` })
@@ -37,7 +36,7 @@ io.on('connection', (socket) => {
 })
 
 app.get('/', (req, res) => {
-    res.send("Server is online")
+    res.send("Server active")
 })
 
 http.listen(PORT, () => {
