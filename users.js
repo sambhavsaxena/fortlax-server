@@ -8,7 +8,7 @@ const addUser = (id, name, room) => {
     if (name.length < 3) return { error: "Username must be at least three characters" }
     if (room.length < 3) return { error: "Room name must be at least three characters" }
     if (name === "sambhavsaxena") return { error: "Its a special name!" }
-    if (name === "esha") return { error: "Its the person I love!" }
+    if (name.includes('esha')) return { error: "Its the person I love!" }
     if (!name) return { error: "Username is required" }
     if (!room) return { error: "Room is required" }
 
