@@ -14,7 +14,7 @@ app.use(cors())
 io.on('connection', (socket) => {
     socket.on('login', ({ name, room }, callback) => {
         const { user, error } = addUser(socket.id, name, room)
-        if (error) return callback(error)z
+        if (error) return callback(error)
         if (user.length < 3)
         {
             return { error: "Enter at least 3 characters" }
