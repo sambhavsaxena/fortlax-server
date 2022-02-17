@@ -15,6 +15,8 @@ io.on('connection', (socket) => {
     socket.on('login', ({ name, room }, callback) => {
         const { user, error } = addUser(socket.id, name, room)
         if (error) return callback(error)
+        if (name.length < 3) callback ("Username must be at least 3 characters")
+        if (room.length < 3) callback ("Room name must be at least 3 characters")
         socket.join(user.room)
         socket.in(room).emit('notification', { title: 'Someone\'s here', description: `${user.name} just entered the room` })
         io.in(room).emit('users', getUsers(room))
