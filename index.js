@@ -21,6 +21,14 @@ io.on('connection', (socket) => {
         callback()
     })
 
+    socket.on('typing', data => {
+        const user = getUser(socket.id)
+        if (data.typing == true)
+            io.in(user.room).emit('display', data)
+        else
+            io.in(user.room).emit('display', data)
+    })
+
     socket.on('sendMessage', message => {
         const user = getUser(socket.id)
         io.in(user.room).emit('message', { user: user.name, text: message });
