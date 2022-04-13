@@ -23,10 +23,7 @@ io.on('connection', (socket) => {
 
     socket.on('typing', data => {
         const user = getUser(socket.id)
-        if (data.typing == true)
-            io.in(user.room).emit('display', data)
-        else
-            io.in(user.room).emit('display', data)
+        io.in(user.room).emit('display', data)
     })
 
     socket.on('sendMessage', message => {
