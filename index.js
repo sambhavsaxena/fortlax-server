@@ -3,6 +3,7 @@ const http = require('http').createServer(app)
 const io = require('socket.io')(http)
 const cors = require('cors')
 const env = require('dotenv')
+const data = require('./data.json')
 
 env.config()
 
@@ -41,7 +42,7 @@ io.on('connection', (socket) => {
 })
 
 app.get('/', (req, res) => {
-    res.send("Server active")
+    res.json(data)
 })
 
 http.listen(PORT, () => {
