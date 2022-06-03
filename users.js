@@ -9,7 +9,6 @@ const addUser = (id, name, room) => {
     if (room.length < 3) return { error: "Room name must be at least three characters" }
     if (!name) return { error: "Username is required" }
     if (!room) return { error: "Room is required" }
-
     const user = { id, name, room }
     users.push(user)
     return { user }
